@@ -1,3 +1,3 @@
 export const removeComment = () => {
-				console.log('удаление коментариев');
+	console.log('удаление коментариев');
 };

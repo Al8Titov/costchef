@@ -1,4 +1,4 @@
-import { generateDate } from './generate-date'
+import { generateDate } from './generate-date';
 
 export const addUser = (login, password) =>
 	fetch('http://localhost:3005/users', {
@@ -13,4 +13,3 @@ export const addUser = (login, password) =>
 			role_id: 2,
 		}),
 	});
-

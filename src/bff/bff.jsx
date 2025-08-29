@@ -1,12 +1,10 @@
 import { getUser } from './get-user';
 import { addUser } from './add-user';
-import { createSession } from './create-session'
-
+import { createSession } from './create-session';
 
 export const server = {
 	async authorize(authLogin, authPassword) {
 		const user = await getUser(authLogin);
-
 
 		if (!user) {
 			return {
@@ -39,8 +37,6 @@ export const server = {
 		}
 
 		await addUser(regLogin, regPassword);
-
-
 
 		return {
 			error: null,
