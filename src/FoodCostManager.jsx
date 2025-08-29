@@ -1,6 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
-import { Router } from 'react-router-dom';
+import { Header } from './components'
 import styled from 'styled-components';
+
+const AppColumn = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 1350px;
+	min-height: 100%;
+	margin: 0 auto;
+	background-color: #f4f3daff;
+`;
 
 const Content = styled.div`
 	padding: 120px 0;
@@ -10,12 +20,14 @@ const H2 = styled.h2`
 	text-align: center;
 `;
 
-const Header = () => <div>Шапка</div>;
+
 const Footer = () => <div>Футер</div>;
+
+
 
 export const FoodCostManager = () => {
 	return (
-		<>
+		<AppColumn>
 			<Header />
 			<Content>
 				<H2>Контент страницы</H2>
@@ -31,6 +43,6 @@ export const FoodCostManager = () => {
 				</Routes>
 			</Content>
 			<Footer />
-		</>
+		</AppColumn>
 	);
 };
