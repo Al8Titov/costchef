@@ -9,7 +9,8 @@
 		}
 	],
 	"roles": [
-		{ "id": 1, "name": "admin" },
+		{ "id": 0, "name": "Администратор" },
+		{ "id": 1, "name": "Пользователь" },
 		{ "id": 2, "name": "Гость" }
 	],
 	"dish_categories": [
