@@ -1,0 +1,204 @@
+{
+	"users": [
+		{
+			"id": "0001",
+			"login": "admin",
+			"password": "admin123",
+			"registered_at": "2025-08-28T10:00:00Z",
+			"role_id": 1
+		}
+	],
+	"roles": [
+		{ "id": 1, "name": "admin" },
+		{ "id": 2, "name": "Гость" }
+	],
+	"dish_categories": [
+		{ "id": 1, "name": "Супы" },
+		{ "id": 2, "name": "Салаты" },
+		{ "id": 3, "name": "Горячее" },
+		{ "id": 4, "name": "Гарнир" },
+		{ "id": 5, "name": "Холодные закуски" },
+		{ "id": 6, "name": "Горячее закуски" },
+		{ "id": 7, "name": "Десерты" }
+	],
+	"product_categories": [
+		{ "id": 1, "name": "Овощи" },
+		{ "id": 2, "name": "Мясо" },
+		{ "id": 3, "name": "Птица" },
+		{ "id": 4, "name": "Рыба-морепродукты" },
+		{ "id": 5, "name": "Бакалея" },
+		{ "id": 6, "name": "Молочка" },
+		{ "id": 7, "name": "Фрукты-ягоды" },
+		{ "id": 8, "name": "Напитки" },
+		{ "id": 9, "name": "Зелень" },
+		{ "id": 10, "name": "Специи" }
+	],
+	"dish": [
+		{
+			"id": 1,
+			"name": "Борщ",
+			"description": "Традиционный Русский суп ",
+			"image_url": "https://fastly.picsum.photos/id/881/280/150.jpg?hmac=eieKOEsDk8kyVMmlWJm-Z5eHJ9d3OSrs3Z2A6AdeJgg",
+			"process": "Отварить мясо, добавить овощи, готовить 40 минут",
+			"weight": 500,
+			"category_id": 1,
+			"cost_price": 150,
+			"created_at": "2025-08-28T10:10:00Z",
+			"updated_at": "2025-08-28T10:10:00Z"
+		},
+		{
+			"id": 2,
+			"name": "Жаренная картошка",
+			"description": "Традиционное Русское блюдо",
+			"image_url": "https://fastly.picsum.photos/id/584/280/150.jpg?hmac=ICVKupkG4FSYsT2DyDErcBZIYAO5Dmi_YAVRyjl4rEQ",
+			"process": "Обжарить картофель до золотистой корочки",
+			"weight": 500,
+			"category_id": 1,
+			"cost_price": 150,
+			"created_at": "2025-08-28T10:10:00Z",
+			"updated_at": "2025-08-28T10:10:00Z"
+		},
+		{
+			"id": 3,
+			"name": "Жаренный судак",
+			"description": "Потресающее блюдо из речного судака под соусом дорблю",
+			"image_url": "https://fastly.picsum.photos/id/1076/280/150.jpg?hmac=UVY10vtfWK5IrWbQo5Sb4h68InAV-1lVxywbfaUwxqA",
+			"process": "Замариновать судака, обжарить до золотистой корочки",
+			"weight": 500,
+			"category_id": 1,
+			"cost_price": 150,
+			"created_at": "2025-08-28T10:10:00Z",
+			"updated_at": "2025-08-28T10:10:00Z"
+		},
+		{
+			"id": 4,
+			"name": "Омлет",
+			"description": "Потресающий завтрак",
+			"image_url": "https://fastly.picsum.photos/id/375/280/150.jpg?hmac=g6Y3p5EpBV7UHmgp2T9mOPOEGnXOp0d2p1NoMjElvu8",
+			"process": "Взбить яйца, обжарить на сковороде",
+			"weight": 500,
+			"category_id": 1,
+			"cost_price": 150,
+			"created_at": "2025-08-28T10:10:00Z",
+			"updated_at": "2025-08-28T10:10:00Z"
+		},
+		{
+			"id": 5,
+			"name": "Аджапсандал",
+			"description": "Традиционный грузинское  суп ",
+			"image_url": "https://fastly.picsum.photos/id/646/280/150.jpg?hmac=J1YWTviAbOk_fF4hPNF_DzCL41pGiYFBwhrmXZTKOaA",
+			"process": "Все овощи обжарить отдельно, соединить, залить бульоном, тушить 30 мин",
+			"weight": 500,
+			"category_id": 1,
+			"cost_price": 150,
+			"created_at": "2025-08-28T10:10:00Z",
+			"updated_at": "2025-08-28T10:10:00Z"
+		},
+		{
+			"id": 6,
+			"name": "Цезарь с курицей",
+			"description": "Традиционный салат",
+			"image_url": "https://fastly.picsum.photos/id/494/280/150.jpg?hmac=fA1czZdoNCSewKDxyr05ZcPQnilKBWbUFY3uajX8WKE",
+			"process": "Помыть листья, обжарить курицу, смешать все ингредиенты",
+			"weight": 500,
+			"category_id": 1,
+			"cost_price": 150,
+			"created_at": "2025-08-28T10:10:00Z",
+			"updated_at": "2025-08-28T10:10:00Z"
+		}
+	],
+	"product": [
+		{
+			"id": 1,
+			"name": "Картофель",
+			"category_id": 1,
+			"quantity": 10,
+			"unit": "kg",
+			"total_price": 200,
+			"price_per_unit": 20,
+			"created_at": "2025-08-28T09:00:00Z",
+			"updated_at": "2025-08-28T09:00:00Z"
+		},
+		{
+			"id": 2,
+			"name": "Свёкла",
+			"category_id": 1,
+			"quantity": 5,
+			"unit": "kg",
+			"total_price": 150,
+			"price_per_unit": 30,
+			"created_at": "2025-08-28T09:30:00Z",
+			"updated_at": "2025-08-28T09:30:00Z"
+		},
+		{
+			"id": 3,
+			"name": "Лук репчатый",
+			"category_id": 1,
+			"quantity": 10,
+			"unit": "kg",
+			"total_price": 200,
+			"price_per_unit": 20,
+			"created_at": "2025-08-28T09:00:00Z",
+			"updated_at": "2025-08-28T09:00:00Z"
+		},
+		{
+			"id": 4,
+			"name": "Морковь",
+			"category_id": 1,
+			"quantity": 10,
+			"unit": "kg",
+			"total_price": 200,
+			"price_per_unit": 20,
+			"created_at": "2025-08-28T09:00:00Z",
+			"updated_at": "2025-08-28T09:00:00Z"
+		},
+		{
+			"id": 5,
+			"name": "Томатная паста",
+			"category_id": 1,
+			"quantity": 10,
+			"unit": "kg",
+			"total_price": 200,
+			"price_per_unit": 20,
+			"created_at": "2025-08-28T09:00:00Z",
+			"updated_at": "2025-08-28T09:00:00Z"
+		},
+		{
+			"id": 6,
+			"name": "Соль",
+			"category_id": 1,
+			"quantity": 10,
+			"unit": "kg",
+			"total_price": 200,
+			"price_per_unit": 20,
+			"created_at": "2025-08-28T09:00:00Z",
+			"updated_at": "2025-08-28T09:00:00Z"
+		},
+		{
+			"id": 7,
+			"name": "Перец",
+			"category_id": 1,
+			"quantity": 10,
+			"unit": "kg",
+			"total_price": 200,
+			"price_per_unit": 20,
+			"created_at": "2025-08-28T09:00:00Z",
+			"updated_at": "2025-08-28T09:00:00Z"
+		},
+		{
+			"id": 8,
+			"name": "Укроп",
+			"category_id": 1,
+			"quantity": 10,
+			"unit": "kg",
+			"total_price": 200,
+			"price_per_unit": 20,
+			"created_at": "2025-08-28T09:00:00Z",
+			"updated_at": "2025-08-28T09:00:00Z"
+		}
+	],
+	"dish_product": [
+		{ "id": 1, "dish_id": 1, "product_id": 1, "quantity": 0.5, "unit": "kg" },
+		{ "id": 2, "dish_id": 1, "product_id": 2, "quantity": 0.3, "unit": "kg" }
+	]
+}

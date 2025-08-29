@@ -1,6 +1,3 @@
-
-
-
 - Пользователи (users): id / login / password / registered_at / role_id
 
 - Роли (roles): id / name
@@ -11,9 +8,7 @@
 
 - Связь блюд и продуктов (dish_product): id / dish_id / product_id / quantity (количество продукта в блюде) /unit
 
-
 - Сессия текущего пользователя (BFF): login / password / role
-
 
 Redux Store (клиент):
 
@@ -24,3 +19,7 @@ Redux Store (клиент):
 - dish: объект (подробная информация по блюду)
 
 - users: массив { id / login / registeredAt / role }
+
+
+Запуск базы данных
+json-server --watch src/db.json --port 3005
