@@ -12,10 +12,10 @@ export const Header = styled(HeaderContainer)`
 	position: fixed;
 	top: 0;
 	width: 1350px;
-	height: 120px;
+	height: 70px;
 	box-shadow: 0 1px 11px #000;
-	border-bottom-left-radius: 20px;
-	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
 	background-color: #23488dff;
 
 	display: flex;

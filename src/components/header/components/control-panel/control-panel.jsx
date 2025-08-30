@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const ControlPanelContainer = ({ className }) => {
 	return (
 		<div className={className}>
-			<StyledLink to="warehouse" className="logout">Склад</StyledLink>
+			<StyledLink to="warehouse" className="logout">
+				Склад
+			</StyledLink>
 			<StyledLink to="/dish/:id">Блюда</StyledLink>
 			<StyledLink to="/users">Пользователи</StyledLink>
 			<StyledLink to="/login">Войти</StyledLink>
@@ -27,7 +29,10 @@ const StyledLink = styled(Link)`
 	justify-content: center;
 
 	box-shadow: 0 2px 6px rgba(7, 7, 7, 1);
-	transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+	transition:
+		background 0.2s ease,
+		transform 0.15s ease,
+		box-shadow 0.2s ease;
 
 	&:hover {
 		background-color: #325b8aff;
@@ -57,7 +62,10 @@ export const ControlPanel = styled(ControlPanelContainer)`
 		cursor: pointer;
 
 		box-shadow: 0 2px 6px rgba(7, 7, 7, 1);
-		transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+		transition:
+			background 0.2s ease,
+			transform 0.15s ease,
+			box-shadow 0.2s ease;
 
 		&:hover {
 			background-color: #325b8aff;
@@ -71,3 +79,8 @@ export const ControlPanel = styled(ControlPanelContainer)`
 	}
 `;
 
+fetch(
+	'https://api.openweathermap.org/data/3.0/onecall?q=Moscow&units=metric&lang=ru&exclude={part}&appid=ea15fb3ee15eb66fe685f89dd718c59c',
+)
+	.then((data) => data.json())
+	.then(console.log);
