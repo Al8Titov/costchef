@@ -3,18 +3,25 @@ import { Icon } from '../../../../components';
 import styled from 'styled-components';
 
 const LargeText = styled.div`
-	font-size: 48px;
-	font-weight: 600;
-	margin-top: 16px;
-	line-height: 45px;
-	text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3); /* лёгкая тень для объёма */
+	font-size: 32px;
+	font-weight: 700;
+	margin-top: 0;
+	line-height: 1.2;
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+	background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
 `;
 
 const SmallText = styled.div`
-	font-size: 17px;
+	font-size: 14px;
 	font-weight: 400;
-	margin-top: 1px;
-	text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3); /* лёгкая тень для объёма */
+	margin-top: 4px;
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+	color: rgba(255, 255, 255, 0.9);
 `;
 
 export const LogoContainer = ({ className }) => (
@@ -29,8 +36,14 @@ export const LogoContainer = ({ className }) => (
 
 export const Logo = styled(LogoContainer)`
 	display: flex;
+	align-items: center;
 	margin-top: -4px;
-	filter: drop-shadow(2px 2px 4px rgba(255, 255, 255, 0.3));
-	color: #000;
+	filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+	color: white;
 	text-decoration: none;
+	transition: transform 0.3s ease;
+	
+	&:hover {
+		transform: scale(1.05);
+	}
 `;
