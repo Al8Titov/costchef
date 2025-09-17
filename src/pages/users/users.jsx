@@ -20,6 +20,7 @@ import { formatDate, isAdmin } from '../../utils/dataUtils';
 import { useUsers } from '../../hooks/useUsers';
 import { deleteUserWithCascade } from '../../bff/delete-user-api';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 /**
  * Компонент страницы управления пользователями (только для администратора)
@@ -293,6 +294,10 @@ const UsersContainer = ({ className }) => {
 			</Modal>
 		</div>
 	);
+};
+
+UsersContainer.propTypes = {
+	className: PropTypes.string,
 };
 
 const PageHeader = styled.div`

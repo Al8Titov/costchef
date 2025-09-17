@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Icon } from '../../../../components';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const LargeText = styled.div`
 	font-size: 32px;
@@ -33,6 +34,10 @@ export const LogoContainer = ({ className }) => (
 		</div>
 	</Link>
 );
+
+LogoContainer.propTypes = {
+	className: PropTypes.string,
+};
 
 export const Logo = styled(LogoContainer)`
 	display: flex;

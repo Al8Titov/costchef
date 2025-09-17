@@ -4,6 +4,7 @@ import { Button } from '../../components';
 import { ROLE } from '../../constans';
 import { isGuest } from '../../utils/dataUtils';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 /**
  * Компонент главной страницы приложения
@@ -114,6 +115,10 @@ const HomeContainer = ({ className }) => {
 			</FeaturesSection>
 		</div>
 	);
+};
+
+HomeContainer.propTypes = {
+	className: PropTypes.string,
 };
 
 const HeroSection = styled.section`

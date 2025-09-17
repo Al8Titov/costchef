@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 /**
  * Компонент кнопки с различными вариантами стилизации
@@ -23,6 +24,14 @@ const ButtonContainer = ({
 			{children}
 		</button>
 	);
+};
+
+ButtonContainer.propTypes = {
+	children: PropTypes.node.isRequired,
+	className: PropTypes.string,
+	width: PropTypes.string,
+	size: PropTypes.oneOf(['small', 'medium', 'large']),
+	variant: PropTypes.oneOf(['primary', 'secondary']),
 };
 
 export const Button = styled(ButtonContainer)`

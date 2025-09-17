@@ -1,3 +1,8 @@
+/**
+ * Получает пользователя по логину
+ * @param {string} loginToFind - Логин для поиска
+ * @returns {Promise<Object|null>} Объект пользователя или null
+ */
 export const getUser = async (loginToFind) => {
 	try {
 		// Загружаем пользователя из db.json через json-server

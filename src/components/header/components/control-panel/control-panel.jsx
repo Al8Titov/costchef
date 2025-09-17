@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '../../../button/button';
 import { ROLE } from '../../../../constans';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 /**
  * Панель управления с навигацией в зависимости от роли пользователя
@@ -50,6 +51,16 @@ const ControlPanelContainer = ({ user, onLogout, className }) => {
 			)}
 		</div>
 	);
+};
+
+ControlPanelContainer.propTypes = {
+	user: PropTypes.shape({
+		id: PropTypes.string,
+		login: PropTypes.string,
+		role_id: PropTypes.number,
+	}),
+	onLogout: PropTypes.func.isRequired,
+	className: PropTypes.string,
 };
 
 export const ControlPanel = styled(ControlPanelContainer)`

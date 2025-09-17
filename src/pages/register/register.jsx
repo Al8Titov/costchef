@@ -9,6 +9,7 @@ import { Button, Input } from '../../components';
 import { setUser } from '../../action/set-user';
 import { generateId } from '../../utils/dataUtils';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const registerFormSchema = yup.object().shape({
 	login: yup
@@ -164,6 +165,10 @@ const RegisterContainer = ({ className }) => {
 			</RegisterForm>
 		</div>
 	);
+};
+
+RegisterContainer.propTypes = {
+	className: PropTypes.string,
 };
 
 const RegisterForm = styled.form`

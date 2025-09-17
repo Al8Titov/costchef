@@ -8,6 +8,7 @@ import { server } from '../../bff';
 import { Button, Input } from '../../components';
 import { setUser } from '../../action/set-user';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const authFormSchema = yup.object().shape({
 	login: yup
@@ -99,6 +100,10 @@ const AuthorizationContainer = ({ className }) => {
 			</form>
 		</div>
 	);
+};
+
+AuthorizationContainer.propTypes = {
+	className: PropTypes.string,
 };
 
 export const StyledButton = styled(Button)`

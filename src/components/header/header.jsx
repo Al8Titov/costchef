@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ControlPanel, Logo } from './components';
 import { ROLE } from '../../constans';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 /**
  * Компонент шапки приложения с навигацией
@@ -31,6 +32,10 @@ const HeaderContainer = ({ className }) => {
 			/>
 		</header>
 	);
+};
+
+HeaderContainer.propTypes = {
+	className: PropTypes.string,
 };
 
 export const Header = styled(HeaderContainer)`

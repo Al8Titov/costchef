@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 /**
  * Компонент подвала приложения
@@ -25,6 +26,10 @@ const FooterContainer = ({ className }) => {
 			</div>
 		</footer>
 	);
+};
+
+FooterContainer.propTypes = {
+	className: PropTypes.string,
 };
 
 export const Footer = styled(FooterContainer)`

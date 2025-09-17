@@ -16,6 +16,7 @@ import { useSelector } from 'react-redux';
 import { Button, Modal } from '../../components';
 import { formatPrice, formatWeight } from '../../utils/calculations';
 import { getUserDishes, deleteDish } from '../../bff/dishes-api';
+import PropTypes from 'prop-types';
 
 /**
  * Форматирует вес блюда в граммах в читаемый вид
@@ -259,6 +260,10 @@ const DishesContainer = ({ className }) => {
 			</Modal>
 		</div>
 	);
+};
+
+DishesContainer.propTypes = {
+	className: PropTypes.string,
 };
 
 const PageHeader = styled.div`

@@ -20,6 +20,7 @@ import { generateId } from '../../utils/dataUtils';
 import { createDish } from '../../bff/dishes-api';
 import { getUserProducts } from '../../bff/products-api';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 /**
  * Компонент страницы создания рецепта
@@ -433,6 +434,10 @@ const CreateRecipeContainer = ({ className }) => {
 			</Modal>
 		</div>
 	);
+};
+
+CreateRecipeContainer.propTypes = {
+	className: PropTypes.string,
 };
 
 // Стили

@@ -19,6 +19,7 @@ import { formatPrice, formatWeight, calculatePricePerUnit } from '../../utils/ca
 import { filterBySearch, sortByField, generateId, formatDate } from '../../utils/dataUtils';
 import { getUserProducts, createProduct, deleteProduct } from '../../bff/products-api';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 /**
  * Компонент страницы склада с таблицей продуктов
@@ -433,6 +434,10 @@ const WarehouseContainer = ({ className }) => {
 			</Modal>
 		</div>
 	);
+};
+
+WarehouseContainer.propTypes = {
+	className: PropTypes.string,
 };
 
 const PageHeader = styled.div`

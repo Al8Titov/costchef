@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 /**
  * Универсальный компонент модального окна
@@ -49,6 +50,14 @@ const ModalContainer = ({
 		</Overlay>,
 		document.body
 	);
+};
+
+ModalContainer.propTypes = {
+	isOpen: PropTypes.bool.isRequired,
+	onClose: PropTypes.func.isRequired,
+	children: PropTypes.node.isRequired,
+	title: PropTypes.string,
+	className: PropTypes.string,
 };
 
 const Overlay = styled.div`
