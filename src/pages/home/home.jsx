@@ -6,11 +6,6 @@ import { isGuest } from '../../utils/dataUtils';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-/**
- * Компонент главной страницы приложения
- * @param {string} className - CSS класс
- * @returns {JSX.Element} Главная страница
- */
 const HomeContainer = ({ className }) => {
 	const user = useSelector((state) => state.user);
 	const isUserGuest = isGuest(user);

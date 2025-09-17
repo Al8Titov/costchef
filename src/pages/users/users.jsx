@@ -1,18 +1,3 @@
-/**
- * @fileoverview Страница управления пользователями (только для администратора)
- * 
- * Этот файл содержит компонент для управления пользователями системы:
- * - Отображение списка всех пользователей
- * - Каскадное удаление пользователей и их данных
- * - Обновление списка пользователей в реальном времени
- * - Фильтрация и сортировка пользователей
- * 
- * Доступно только администраторам
- * 
- * @author CostChef Team
- * @version 1.0.0
- */
-
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Button, Modal } from '../../components';
@@ -22,11 +7,6 @@ import { deleteUserWithCascade } from '../../bff/delete-user-api';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-/**
- * Компонент страницы управления пользователями (только для администратора)
- * @param {string} className - CSS класс
- * @returns {JSX.Element} Страница пользователей
- */
 const UsersContainer = ({ className }) => {
 	const currentUser = useSelector((state) => state.user);
 	const { users, loading, error, refreshUsers } = useUsers();
@@ -51,7 +31,6 @@ const UsersContainer = ({ className }) => {
 		);
 	}
 
-	// Обновляем список пользователей каждые 5 секунд
 	useEffect(() => {
 		const interval = setInterval(() => {
 			refreshUsers();
@@ -66,20 +45,12 @@ const UsersContainer = ({ className }) => {
 		{ id: 2, name: 'Гость' }
 	];
 
-	/**
-	 * Обработчик открытия модального окна редактирования роли
-	 * @param {Object} user - Данные пользователя
-	 */
 	const handleEditRole = (user) => {
 		setSelectedUser(user);
 		setEditForm({ role_id: user.role_id.toString() });
 		setIsEditModalOpen(true);
 	};
 
-	/**
-	 * Обработчик изменения роли пользователя
-	 * @param {Event} e - Событие изменения
-	 */
 	const handleRoleChange = (e) => {
 		setEditForm(prev => ({
 			...prev,
@@ -87,9 +58,6 @@ const UsersContainer = ({ className }) => {
 		}));
 	};
 
-	/**
-	 * Обработчик сохранения изменений роли
-	 */
 	const handleSaveRole = () => {
 		if (!selectedUser) return;
 
@@ -110,12 +78,7 @@ const UsersContainer = ({ className }) => {
 		setSelectedUser(null);
 	};
 
-	/**
-	 * Обработчик удаления пользователя
-	 * @param {string} userId - ID пользователя
-	 */
 	const handleDeleteUser = async (userId) => {
-		// Нельзя удалить себя
 		if (userId === currentUser.id) {
 			alert('Вы не можете удалить свой аккаунт');
 			return;
@@ -124,7 +87,6 @@ const UsersContainer = ({ className }) => {
 		if (window.confirm('Вы уверены, что хотите удалить этого пользователя? Это действие удалит пользователя и все его блюда и продукты на складе.')) {
 			try {
 				await deleteUserWithCascade(userId);
-				// Обновляем список пользователей
 				refreshUsers();
 				alert('Пользователь и все связанные данные успешно удалены');
 			} catch (error) {
@@ -134,11 +96,6 @@ const UsersContainer = ({ className }) => {
 		}
 	};
 
-	/**
-	 * Получает статус пользователя
-	 * @param {Object} user - Данные пользователя
-	 * @returns {string} Статус пользователя
-	 */
 	const getUserStatus = (user) => {
 		if (user.is_online) {
 			return 'Онлайн';

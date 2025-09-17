@@ -5,19 +5,11 @@ import { ROLE } from '../../constans';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-/**
- * Компонент шапки приложения с навигацией
- * @param {string} className - CSS класс
- * @returns {JSX.Element} Шапка приложения
- */
 const HeaderContainer = ({ className }) => {
 	const user = useSelector((state) => state.user);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	/**
-	 * Обработчик выхода из системы
-	 */
 	const handleLogout = () => {
 		dispatch({ type: 'LOGOUT' });
 		navigate('/');

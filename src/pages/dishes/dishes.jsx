@@ -1,16 +1,3 @@
-/**
- * @fileoverview Страница просмотра блюд пользователя
- * 
- * Этот файл содержит компонент для отображения всех блюд пользователя:
- * - Карточки блюд с информацией о весе и себестоимости
- * - Фильтрация и сортировка блюд
- * - Модальное окно с подробной информацией
- * - Удаление блюд
- * 
- * @author CostChef Team
- * @version 1.0.0
- */
-
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Button, Modal } from '../../components';
@@ -18,11 +5,6 @@ import { formatPrice, formatWeight } from '../../utils/calculations';
 import { getUserDishes, deleteDish } from '../../bff/dishes-api';
 import PropTypes from 'prop-types';
 
-/**
- * Форматирует вес блюда в граммах в читаемый вид
- * @param {number} weightInGrams - Вес в граммах
- * @returns {string} Отформатированный вес
- */
 const formatDishWeight = (weightInGrams) => {
 	const weight = parseFloat(weightInGrams || 0);
 	
@@ -35,11 +17,6 @@ const formatDishWeight = (weightInGrams) => {
 import { filterBySearch, sortByField, getFromStorage } from '../../utils/dataUtils';
 import styled from 'styled-components';
 
-/**
- * Компонент страницы блюд с карточками и фильтрами
- * @param {string} className - CSS класс
- * @returns {JSX.Element} Страница блюд
- */
 const DishesContainer = ({ className }) => {
 	const [dishes, setDishes] = useState([]);
 	const [filteredDishes, setFilteredDishes] = useState([]);
@@ -51,7 +28,6 @@ const DishesContainer = ({ className }) => {
 
 	const currentUser = useSelector((state) => state.user);
 
-	// Загружаем данные из db.json
 	useEffect(() => {
 		const loadDishes = async () => {
 			if (!currentUser) return;
@@ -68,41 +44,28 @@ const DishesContainer = ({ className }) => {
 		loadDishes();
 	}, [currentUser]);
 
-	// Фильтрация и сортировка
 	useEffect(() => {
 		let filtered = [...dishes];
 
-		// Фильтр по поиску
 		if (searchQuery) {
 			filtered = filterBySearch(filtered, searchQuery, 'name');
 		}
 
-		// Фильтр по категории
 		if (selectedCategory) {
 			filtered = filtered.filter(dish => 
 				dish.category_id === parseInt(selectedCategory)
 			);
 		}
-
-		// Сортировка
 		filtered = sortByField(filtered, 'name', sortOrder);
 
 		setFilteredDishes(filtered);
 	}, [dishes, searchQuery, selectedCategory, sortOrder]);
 
-	/**
-	 * Обработчик открытия модального окна с деталями блюда
-	 * @param {Object} dish - Данные блюда
-	 */
 	const handleDishClick = (dish) => {
 		setSelectedDish(dish);
 		setIsModalOpen(true);
 	};
 
-	/**
-	 * Обработчик удаления блюда
-	 * @param {number} dishId - ID блюда
-	 */
 	const handleDeleteDish = async (dishId) => {
 		if (window.confirm('Вы уверены, что хотите удалить это блюдо?')) {
 			try {

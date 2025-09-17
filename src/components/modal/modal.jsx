@@ -3,16 +3,6 @@ import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-/**
- * Универсальный компонент модального окна
- * @param {Object} props - Свойства компонента
- * @param {boolean} props.isOpen - Открыто ли модальное окно
- * @param {Function} props.onClose - Функция закрытия модального окна
- * @param {React.ReactNode} props.children - Содержимое модального окна
- * @param {string} props.title - Заголовок модального окна
- * @param {string} props.className - CSS класс
- * @returns {JSX.Element|null} Модальное окно или null
- */
 const ModalContainer = ({ 
 	isOpen, 
 	onClose, 

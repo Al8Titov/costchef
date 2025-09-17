@@ -1,16 +1,6 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-/**
- * Компонент кнопки с различными вариантами стилизации
- * @param {Object} props - Свойства компонента
- * @param {React.ReactNode} props.children - Содержимое кнопки
- * @param {string} props.className - CSS класс
- * @param {string} props.width - Ширина кнопки
- * @param {string} props.size - Размер кнопки (small, medium, large)
- * @param {string} props.variant - Вариант кнопки (primary, secondary)
- * @returns {JSX.Element} Кнопка
- */
 const ButtonContainer = ({ 
 	children, 
 	className, 

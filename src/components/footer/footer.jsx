@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-/**
- * Компонент подвала приложения
- * @param {string} className - CSS класс
- * @returns {JSX.Element} Подвал приложения
- */
 const FooterContainer = ({ className }) => {
 	return (
 		<footer className={className}>

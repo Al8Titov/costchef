@@ -1,17 +1,3 @@
-/**
- * @fileoverview Страница управления складом продуктов
- * 
- * Этот файл содержит компонент для управления складом продуктов:
- * - Отображение всех продуктов пользователя в таблице
- * - Добавление новых продуктов с категоризацией
- * - Удаление продуктов
- * - Фильтрация и сортировка продуктов
- * - Расчет цены за единицу измерения
- * 
- * @author CostChef Team
- * @version 1.0.0
- */
-
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Button, Input, Modal } from '../../components';
@@ -21,11 +7,6 @@ import { getUserProducts, createProduct, deleteProduct } from '../../bff/product
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-/**
- * Компонент страницы склада с таблицей продуктов
- * @param {string} className - CSS класс
- * @returns {JSX.Element} Страница склада
- */
 const WarehouseContainer = ({ className }) => {
 	const [products, setProducts] = useState([]);
 	const [filteredProducts, setFilteredProducts] = useState([]);
@@ -45,7 +26,6 @@ const WarehouseContainer = ({ className }) => {
 
 	const currentUser = useSelector((state) => state.user);
 
-	// Загружаем данные из db.json
 	useEffect(() => {
 		const loadProducts = async () => {
 			if (!currentUser) return;
@@ -62,16 +42,13 @@ const WarehouseContainer = ({ className }) => {
 		loadProducts();
 	}, [currentUser]);
 
-	// Фильтрация и сортировка
 	useEffect(() => {
 		let filtered = [...products];
 
-		// Фильтр по поиску
 		if (searchQuery) {
 			filtered = filterBySearch(filtered, searchQuery, 'name');
 		}
 
-		// Сортировка
 		filtered = sortByField(filtered, 'name', sortOrder);
 
 		setFilteredProducts(filtered);
@@ -101,7 +78,6 @@ const WarehouseContainer = ({ className }) => {
 			[name]: value
 		}));
 		
-		// Очищаем ошибки при изменении
 		if (errors[name]) {
 			setErrors(prev => ({
 				...prev,
@@ -110,10 +86,6 @@ const WarehouseContainer = ({ className }) => {
 		}
 	};
 
-	/**
-	 * Валидирует форму добавления продукта
-	 * @returns {boolean} Валидна ли форма
-	 */
 	const validateForm = () => {
 		const newErrors = {};
 
@@ -137,10 +109,6 @@ const WarehouseContainer = ({ className }) => {
 		return Object.keys(newErrors).length === 0;
 	};
 
-	/**
-	 * Обработчик добавления нового продукта
-	 * @param {Event} e - Событие отправки формы
-	 */
 	const handleAddProduct = async (e) => {
 		e.preventDefault();
 		
@@ -189,10 +157,6 @@ const WarehouseContainer = ({ className }) => {
 		}
 	};
 
-	/**
-	 * Обработчик удаления продукта
-	 * @param {number} productId - ID продукта
-	 */
 	const handleDeleteProduct = async (productId) => {
 		if (window.confirm('Вы уверены, что хотите удалить этот продукт?')) {
 			try {
@@ -209,10 +173,6 @@ const WarehouseContainer = ({ className }) => {
 		}
 	};
 
-	/**
-	 * Обработчик открытия истории продукта
-	 * @param {Object} product - Данные продукта
-	 */
 	const handleShowHistory = (product) => {
 		setSelectedProduct(product);
 		setIsHistoryModalOpen(true);

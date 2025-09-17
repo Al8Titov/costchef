@@ -1,16 +1,3 @@
-/**
- * @fileoverview Страница создания рецептов блюд
- * 
- * Этот файл содержит компонент для создания новых рецептов блюд:
- * - Выбор ингредиентов из склада пользователя
- * - Расчет себестоимости и веса блюда
- * - Модальное окно для добавления ингредиентов
- * - Валидация формы создания рецепта
- * 
- * @author CostChef Team
- * @version 1.0.0
- */
-
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -22,11 +9,6 @@ import { getUserProducts } from '../../bff/products-api';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-/**
- * Компонент страницы создания рецепта
- * @param {string} className - CSS класс
- * @returns {JSX.Element} Страница создания рецепта
- */
 const CreateRecipeContainer = ({ className }) => {
 	const [dishName, setDishName] = useState('');
 	const [ingredients, setIngredients] = useState([]);
@@ -43,7 +25,6 @@ const CreateRecipeContainer = ({ className }) => {
 	const navigate = useNavigate();
 	const currentUser = useSelector((state) => state.user);
 
-	// Загружаем продукты со склада пользователя из db.json
 	useEffect(() => {
 		const loadProducts = async () => {
 			if (!currentUser) return;
@@ -60,7 +41,6 @@ const CreateRecipeContainer = ({ className }) => {
 		loadProducts();
 	}, [currentUser]);
 
-	// Фильтрация продуктов по поиску
 	useEffect(() => {
 		if (productSearch.trim()) {
 			const filtered = availableProducts.filter(product =>
@@ -72,9 +52,6 @@ const CreateRecipeContainer = ({ className }) => {
 		}
 	}, [productSearch, availableProducts]);
 
-	/**
-	 * Обработчик открытия модального окна добавления ингредиента
-	 */
 	const handleOpenModal = () => {
 		if (availableProducts.length === 0) {
 			alert('У вас нет продуктов на складе. Сначала добавьте продукты на склад.');
@@ -98,9 +75,6 @@ const CreateRecipeContainer = ({ className }) => {
 		setProductSearch('');
 	};
 
-	/**
-	 * Обработчик добавления ингредиента
-	 */
 	const handleAddIngredient = () => {
 		if (!selectedProduct || !ingredientQuantity) {
 			alert('Выберите продукт и укажите количество');
@@ -113,47 +87,37 @@ const CreateRecipeContainer = ({ className }) => {
 			return;
 		}
 
-		// Конвертируем единицы измерения в граммы для расчета
 		let quantityInGrams = quantity;
 		if (ingredientUnit === 'кг') {
 			quantityInGrams = quantity * 1000;
 		} else if (ingredientUnit === 'л') {
-			quantityInGrams = quantity * 1000; // Предполагаем, что 1л = 1кг
+			quantityInGrams = quantity * 1000;
 		}
 
 		const ingredient = {
 			id: generateId(),
 			product_id: selectedProduct.id,
 			name: selectedProduct.name,
-			quantity: quantityInGrams, // Храним в граммах
-			display_quantity: quantity, // Для отображения
-			display_unit: ingredientUnit, // Для отображения
+			quantity: quantityInGrams,
+			display_quantity: quantity,
+			display_unit: ingredientUnit,
 			price_per_unit: selectedProduct.price_per_unit,
-			cost: (quantityInGrams / 1000) * selectedProduct.price_per_unit // Стоимость в рублях
+			cost: (quantityInGrams / 1000) * selectedProduct.price_per_unit
 		};
 
-		// Используем requestAnimationFrame для плавного обновления
 		requestAnimationFrame(() => {
 			setIngredients(prev => [...prev, ingredient]);
 		});
 		
-		// Закрываем модалку с небольшой задержкой для плавности
 		setTimeout(() => {
 			handleCloseModal();
 		}, 100);
 	};
 
-	/**
-	 * Обработчик удаления ингредиента
-	 * @param {string} ingredientId - ID ингредиента
-	 */
 	const handleRemoveIngredient = (ingredientId) => {
 		setIngredients(prev => prev.filter(ing => ing.id !== ingredientId));
 	};
 
-	/**
-	 * Валидация формы
-	 */
 	const validateForm = () => {
 		const newErrors = {};
 
@@ -169,9 +133,6 @@ const CreateRecipeContainer = ({ className }) => {
 		return Object.keys(newErrors).length === 0;
 	};
 
-	/**
-	 * Обработчик создания рецепта
-	 */
 	const handleCreateRecipe = async () => {
 		if (!validateForm()) {
 			return;
@@ -180,13 +141,12 @@ const CreateRecipeContainer = ({ className }) => {
 		setIsSubmitting(true);
 
 		try {
-			// Рассчитываем себестоимость и вес
 			const totalCost = ingredients.reduce((total, ingredient) => {
 				return total + (ingredient.cost || 0);
 			}, 0);
 			
 			const totalWeight = ingredients.reduce((total, ingredient) => {
-				return total + (ingredient.quantity || 0); // quantity уже в граммах
+				return total + (ingredient.quantity || 0);
 			}, 0);
 
 			const dish = {
@@ -204,12 +164,10 @@ const CreateRecipeContainer = ({ className }) => {
 				updated_at: new Date().toISOString()
 			};
 
-			// Сохраняем в db.json через API
 			await createDish(dish);
 			
 			console.log('Создано блюдо:', dish);
 			
-			// Добавляем небольшую задержку для плавного перехода
 			setTimeout(() => {
 				navigate('/dishes');
 			}, 200);
@@ -221,13 +179,12 @@ const CreateRecipeContainer = ({ className }) => {
 		}
 	};
 
-	// Рассчитываем общую стоимость и вес на основе ингредиентов
 	const totalCost = ingredients.reduce((total, ingredient) => {
 		return total + (ingredient.cost || 0);
 	}, 0);
 	
 	const totalWeight = ingredients.reduce((total, ingredient) => {
-		return total + (ingredient.quantity || 0); // quantity уже в граммах
+		return total + (ingredient.quantity || 0);
 	}, 0);
 
 	return (

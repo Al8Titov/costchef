@@ -4,14 +4,6 @@ import { ROLE } from '../../../../constans';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-/**
- * Панель управления с навигацией в зависимости от роли пользователя
- * @param {Object} props - Свойства компонента
- * @param {Object} props.user - Данные пользователя
- * @param {Function} props.onLogout - Функция выхода из системы
- * @param {string} props.className - CSS класс
- * @returns {JSX.Element} Панель управления
- */
 const ControlPanelContainer = ({ user, onLogout, className }) => {
 	const isAdmin = user?.role_id === ROLE.ADMIN;
 	const isUser = user?.role_id === ROLE.USER;
