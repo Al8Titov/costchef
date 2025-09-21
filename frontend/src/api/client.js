@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:3001/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
 class ApiClient {
   constructor() {
@@ -105,9 +105,29 @@ class ApiClient {
     return this.request('/auth/users');
   }
 
+  // Auth methods
+  async updateProfile(profileData) {
+    return this.request('/auth/profile', {
+      method: 'PUT',
+      body: JSON.stringify(profileData),
+    });
+  }
+
+  async changePassword(currentPassword, newPassword) {
+    return this.request('/auth/password', {
+      method: 'PUT',
+      body: JSON.stringify({ currentPassword, newPassword }),
+    });
+  }
+
   // Products methods
-  async getProducts() {
-    return this.request('/products');
+  async getProducts(params = {}) {
+    const queryString = new URLSearchParams(params).toString();
+    return this.request(`/products${queryString ? `?${queryString}` : ''}`);
+  }
+
+  async getProduct(id) {
+    return this.request(`/products/${id}`);
   }
 
   async createProduct(productData) {
@@ -130,9 +150,21 @@ class ApiClient {
     });
   }
 
+  async getProductCategories() {
+    return this.request('/products/categories/list');
+  }
+
+  async updateProductQuantity(id, quantity, operation = 'set') {
+    return this.request(`/products/${id}/quantity`, {
+      method: 'PATCH',
+      body: JSON.stringify({ quantity, operation }),
+    });
+  }
+
   // Dishes methods
-  async getDishes() {
-    return this.request('/dishes');
+  async getDishes(params = {}) {
+    const queryString = new URLSearchParams(params).toString();
+    return this.request(`/dishes${queryString ? `?${queryString}` : ''}`);
   }
 
   async getDish(id) {
@@ -156,6 +188,23 @@ class ApiClient {
   async deleteDish(id) {
     return this.request(`/dishes/${id}`, {
       method: 'DELETE',
+    });
+  }
+
+  async getDishCategories() {
+    return this.request('/dishes/categories/list');
+  }
+
+  async calculateDishCost(ingredients) {
+    return this.request('/dishes/calculate-cost', {
+      method: 'POST',
+      body: JSON.stringify({ ingredients }),
+    });
+  }
+
+  async copyDish(id) {
+    return this.request(`/dishes/${id}/copy`, {
+      method: 'POST',
     });
   }
 }

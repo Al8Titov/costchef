@@ -7,30 +7,22 @@ const productSchema = new mongoose.Schema({
     trim: true,
     maxlength: 100
   },
-  category_id: {
-    type: Number,
-    required: true,
-    enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // Categories from db.json
-  },
-  category_name: {
+  category: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
+    maxlength: 50
   },
   quantity: {
     type: Number,
     required: true,
+    default: 0,
     min: 0
   },
   unit: {
     type: String,
     required: true,
     enum: ['kg', 'g', 'l', 'ml', 'pcs', 'tbsp', 'tsp']
-  },
-  total_price: {
-    type: Number,
-    required: true,
-    min: 0
   },
   price_per_unit: {
     type: Number,
@@ -57,5 +49,9 @@ productSchema.pre('save', function(next) {
   this.updated_at = Date.now();
   next();
 });
+
+// Индексы для оптимизации поиска
+productSchema.index({ user_id: 1, name: 1 });
+productSchema.index({ user_id: 1, category: 1 });
 
 module.exports = mongoose.model('Product', productSchema);
